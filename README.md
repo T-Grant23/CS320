@@ -1,1 +1,9 @@
 # CS320
+How can I ensure that my code, program, or software is functional and secure?
+In this project, I built JUnit tests against the exact constraints in the software requirements (such as field length limits, required/non-updatable IDs, no-null checks) and verified both valid and invalid/out-of-bounds inputs are handled correctly. Achieving 87%+ code coverage with zero test errors across all three modules gave concrete evidence the code behaved as specified rather than just assuming it did. Timeout assertion tests (in lines 56-61 of ContactServiceTest) also confirmed the code performed efficiently, not just correctly, which matters for security too, since performance issues can become denial-of-service vectors.
+-
+How do I interpret user needs and incorporate them into a program?
+User needs get translated into explicit, testable software requirements first. Things like "the contact ID shall not be null and shall not be updatable" or "the phone field must be exactly 10 digits." Each requirement translates to a concrete rule the code must enforce (via getters/setters, validation logic) and a corresponding test case that proves the rule holds. By tracing every class attribute and service method (add, delete, update) back to a specific stated requirement, the implementation stays anchored to what the user/client actually asked for.
+-
+How do I approach designing software?
+In the case of this project, I started from the requirements documents and broke down the system into clear, single-responsibility classes (separating the Contact data class from its respective service class that handles add/delete/update logic). Built in validation at the boundary (constructors, setters) so invalid data can never enter the system, and paired each class with its own dedicated test class. 
